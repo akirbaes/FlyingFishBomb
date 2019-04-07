@@ -1,10 +1,11 @@
-![Logo](https://github.com/funabab/godot-git-control/raw/master/addons/godot-git-control.funabab/logo.png)
+# Flying Fish 
 
-# Godot Git Control #
+Just experimenting with Godot, and with game finishing/exporting/publishing pipeline.
 
-This is a simple Git Companion plugin for @godotengine
+Simple game controlling a fish, making it jump out of water to catch a butterfly. Control is limited out of water. Avoid incoming floating mine.
 
-![ScreenShot](https://github.com/funabab/godot-git-control/raw/master/addons/godot-git-control.funabab/screenshot.png)
+![Fish sprite, butterfly and various explosives](https://i.ibb.co/jhVHBc4/fish-game-sprite-doodles.png "Original doodle")
 
-## minnor rewrite
-## added godotengine 3 support and some other features
+![Gameplay of fish eating butterfly avoiding a floating mine](https://i.ibb.co/7y322JV/version1-30fps.gif "Gameplay extract")
+
+Executable available on https://akirabaes.itch.io/flying-fish

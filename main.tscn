@@ -1,95 +1,47 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
-[ext_resource path="res://Pfish.gd" type="Script" id=2]
-[ext_resource path="res://Fish bomb/fish0000.png" type="Texture" id=3]
-[ext_resource path="res://Fish bomb/fish0001.png" type="Texture" id=4]
-[ext_resource path="res://Fish bomb/fish0002.png" type="Texture" id=5]
-[ext_resource path="res://Fish bomb/fish0003.png" type="Texture" id=6]
-[ext_resource path="res://Fish bomb/fish0004.png" type="Texture" id=7]
-[ext_resource path="res://Node2D.gd" type="Script" id=8]
-[ext_resource path="res://Butterfly.gd" type="Script" id=9]
-[ext_resource path="res://Fish bomb/butterfly.png" type="Texture" id=10]
-[ext_resource path="res://FloatingMine.gd" type="Script" id=11]
-[ext_resource path="res://Fish bomb/sea_mine.png" type="Texture" id=12]
-
-[sub_resource type="CircleShape2D" id=1]
-
-[sub_resource type="SpriteFrames" id=2]
-animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "default",
-"speed": 0.0
-} ]
-
-[sub_resource type="SpriteFrames" id=3]
-animations = [ {
-"frames": [ ExtResource( 10 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
-[sub_resource type="CircleShape2D" id=4]
-radius = 6.00522
-
-[sub_resource type="SpriteFrames" id=5]
-animations = [ {
-"frames": [ ExtResource( 12 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
-[sub_resource type="CircleShape2D" id=6]
-radius = 14.9142
+[ext_resource path="res://Pfish.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Node2D.gd" type="Script" id=3]
+[ext_resource path="res://Butterfly.tscn" type="PackedScene" id=4]
+[ext_resource path="res://FloatingMine.tscn" type="PackedScene" id=5]
+[ext_resource path="res://FloatWater.tscn" type="PackedScene" id=6]
 
 [node name="Controller" type="Control"]
 margin_right = 40.0
 margin_bottom = 14.0
 script = ExtResource( 1 )
 
-[node name="Pfish" type="Area2D" parent="."]
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pfish"]
-shape = SubResource( 1 )
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Pfish"]
-frames = SubResource( 2 )
+[node name="Pfish" parent="." instance=ExtResource( 2 )]
+air_control = 0.15
 
 [node name="Water" type="Node2D" parent="."]
 z_index = -1
-script = ExtResource( 8 )
+script = ExtResource( 3 )
 
-[node name="Butterfly" type="Area2D" parent="."]
-position = Vector2( 34.7941, 57.6136 )
-script = ExtResource( 9 )
+[node name="Butterfly" parent="." instance=ExtResource( 4 )]
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Butterfly"]
-position = Vector2( 0.0670395, 0.148857 )
-frames = SubResource( 3 )
+[node name="Butterfly2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 177.333, 90.1939 )
+respawn_rate = 7.342
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Butterfly"]
-position = Vector2( 0.261604, 0.475658 )
-shape = SubResource( 4 )
+[node name="FloatingMine" parent="." instance=ExtResource( 5 )]
 
-[node name="FloatingMine" type="Area2D" parent="."]
-script = ExtResource( 11 )
+[node name="FloatingMine2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 25.4252, -1.12326 )
+respawn_rate = 4.12
+level = 100
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="FloatingMine"]
-position = Vector2( 0, 14.2696 )
-frames = SubResource( 5 )
-__meta__ = {
-"_edit_group_": true
-}
+[node name="ScoreLabel" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Score"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FloatingMine"]
-shape = SubResource( 6 )
+[node name="FloatWater" parent="." instance=ExtResource( 6 )]
+position = Vector2( 218.283, 64.266 )
+z_index = -2
 
-[connection signal="area_entered" from="Pfish" to="Butterfly" method="_on_Pfish_area_entered"]
-[connection signal="area_entered" from="Pfish" to="FloatingMine" method="_on_Pfish_area_entered"]
+[node name="FloatWater2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 310.25, 98.6151 )
+scale = Vector2( 0.5, 0.5 )
+

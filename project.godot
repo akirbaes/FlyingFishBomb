@@ -28,8 +28,8 @@ settings/fps/force_fps=60
 
 [display]
 
-window/size/width=300
-window/size/height=300
+window/size/width=480
+window/size/height=320
 
 [rendering]
 
